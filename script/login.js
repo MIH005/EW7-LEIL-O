@@ -20,7 +20,7 @@ function validaçaoCampo() {
 
 
 async function login() { 
-    if(!validaçaoCampo()){
+    if (!validaçaoCampo()){
         return;
     }
 

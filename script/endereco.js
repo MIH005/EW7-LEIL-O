@@ -1,82 +1,92 @@
 const url = `https://go-wash-api.onrender.com/api/auth/address/`;
 
 function validarCampos() {
-    let titulo = document.getElementById('title').value.trim();
-    let cep = document.getElementById('cep').value.trim();
-    let endereco = document.getElementById('address').value.trim();
-    let numero = document.getElementById('number').value.trim();
-    let complemento = document.getElementById('complement').value.trim();
+    let titulo = document.getElementById('title').value;
+    let cep = document.getElementById('cep').value;
+    let endereco = document.getElementById('address').value;
+    let numero = document.getElementById('number').value;
+    let complemento = document.getElementById('complement').value;
 
-if (!titulo && !cep && !endereco && !numero) {
+    if (!titulo && !cep && !endereco && !numero) {
         alert('É necessário preencher todos os campos obrigatórios!');
         return false;
-}
+    }
 
-if(cep.length !== 8){
-    alert("Tamanho de CEP inválido.")
-    return false;
-}else{
-    getAddress(cep);
+    if (!titulo) {
+        alert("É necessario preencher o campo título");
+        return false;
+    }
 
-}
-if(!titulo){
-    alert("É necessario preencher o campo titulo")
-return false;
-}
-if(!endereco === true){
-    alert("É necessario preencher o campo Endereço")
-    return false;
-}
-if(numero.length < 1){
-    alert("É necessario preencher o campo Numero")
-    return false;
-}
+    if (!endereco) {
+        alert("É necessário preencher o campo Endereço");
+        return false;
+    }
 
+    if (!numero) {
+        alert("É necessário preencher o campo Número");
+        return false;
+    }
+
+    if (cep.length !== 8) {
+        alert("O CEP deve conter exatamente 8 dígitos!");
+        return false;
+    }
+    
     return true;
-}
-
-//inpede o user de ficar enviando aquisições antes de carregar compl
-const getAddres = async(cep) =>{
-    cepInput.blur();
 }
 
 async function cadastroEndereco() {
     if (!validarCampos()) {
-        return; 
+        return;
     }
 
-    let titulo = document.getElementById('title').value.trim();
-    let cep = document.getElementById('cep').value.trim();
-    let endereco = document.getElementById('address').value.trim();
-    let numero = document.getElementById('number').value.trim();
-    let complemento = document.getElementById('complement').value.trim();
+    // Verifica se o token existe no localStorage
+    let user = localStorage.getItem("user");
+    
+    if (!user) {
+        alert("Usuário não autenticado. Por favor, faça login.");
+        return;
+    }
 
-    let token = JSON.parse(localStorege.getItem('user')).access_token
+    let parsedUser = JSON.parse(user);
+    
+    if (!parsedUser.access_token) {
+        alert("Token de acesso não encontrado. Por favor, faça login novamente.");
+        return;
+    }
 
+    let token = parsedUser.access_token;
+    let titulo = document.getElementById('title').value;
+    let cep = document.getElementById('cep').value;
+    let endereco = document.getElementById('address').value;
+    let numero = document.getElementById('number').value;
+    let complemento = document.getElementById('complement').value;
 
     try {
-        let response = await fetch(url, {
-            method: "POST", 
+        let api = await fetch(url, {
+            method: "POST",
             body: JSON.stringify({
                 "title": titulo,
                 "cep": cep,
                 "address": endereco,
                 "number": numero,
-                "complement": complemento
+                "complement": complemento // Incluindo o complemento
             }),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token // Corrigido para adicionar o espaço
             }
         });
 
-
-            let resposta = await response.json();
-            if (response.ok) {
-                alert("Cadastro de endereço realizado com sucesso!");
-            } else {
-                alert("Ocorreu um erro. Tente novamente: ");
-            }
+        if (api.ok) {
+            let responseData = await api.json();
+            alert("Cadastro de endereço realizado com sucesso!");
+            window.location.href = "../view/home.html";
+        } else {
+            alert("Ocorreu um erro no cadastro do endereço");
+        }
     } catch (error) {
-        alert("Ocorreu um erro ao realizar a requisição: " + error.message);
+        alert("Ocorreu um erro de conexão com a API");
+        console.error(error);
     }
 }

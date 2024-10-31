@@ -1,4 +1,5 @@
-const url = 'https://go-wash-api.onrender.com/api/adress';
+const url = 'https://go-wash-api.onrender.com/api/auth/address/';
+
 async function listarEnderecos() {
     let user = localStorage.getItem("user");
 
@@ -14,7 +15,7 @@ async function listarEnderecos() {
         let resposta = await fetch(url, {
             method: "GET",
             headers: {
-                'Authorization': 'Bearer ' + token
+                'Authorization': 'Bearer ' + token // Correção aqui
             }
         });
 
@@ -23,7 +24,7 @@ async function listarEnderecos() {
             let listaEnderecos = document.getElementById('addressList');
             listaEnderecos.innerHTML = ""; // Limpa a lista
 
-            for (let endereco of enderecos) {
+            for (let endereco of enderecos.data) { // Correção aqui
                 let item = document.createElement('li');
                 item.textContent = endereco.title + ", " + endereco.address + ", " + endereco.number + ", " + endereco.cep + ", " + (endereco.complement || "");
                 listaEnderecos.appendChild(item);
@@ -34,5 +35,7 @@ async function listarEnderecos() {
     } catch (erro) {
         alert("Erro de conexão.");
         console.log(erro);
-    }
+    }
 }
+
+listarEnderecos();

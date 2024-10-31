@@ -119,3 +119,4 @@ async function cadastro() {
         }
     }
 }
+ 
