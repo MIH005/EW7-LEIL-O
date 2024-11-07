@@ -29,7 +29,7 @@
         <main class="content">
             <header>
                 <h2>Bem-vindo ao EW7 Leilão de Eletrônicos!</h2>
-                <a href="../index.html">
+                <a href="../">
                   <button>Sair</button>
                 </a>
             </header>
@@ -75,11 +75,40 @@
                 </div>
             </section>
 
-            <!-- Seção de estatísticas -->
+            <!-- Seção de estatísticas com a Tabela de Endereços -->
             <section class="statistics">
                 <h3>Listar Endereços</h3>
                 <div class="chart">
-                    <ul id="addressList"></ul>
+                    <table id="addressList">
+                        <thead>
+                            <tr>
+                                <th>Título</th>
+                                <th>Endereço</th>
+                                <th>Número</th>
+                                <th>CEP</th>
+                                <th>Complemento</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>apartamento</td>
+                                <td>Rua santa monica</td>
+                                <td>55</td>
+                                <td>06322390</td>
+                                <td>Bloco B</td>
+                                <td><button>Editar</button></td>
+                            </tr>
+                            <tr>
+                                <td>casa</td>
+                                <td>Rua major dantas cortes</td>
+                                <td>67</td>
+                                <td>02206000</td>
+                                <td>Sem complemento</td>
+                                <td><button>Editar</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </section>
         </main>
