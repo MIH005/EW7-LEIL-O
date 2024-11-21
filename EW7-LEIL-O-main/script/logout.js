@@ -13,6 +13,7 @@ async function logout() {
 
         if (response.ok) {
             alert('Logout bem-sucedido!');
+            window.location.href = "index.html"
         } else {
             alert(response.data.error)
         }
