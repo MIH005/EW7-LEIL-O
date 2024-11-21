@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset='utf-8'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/cadastro.css'>
+    <script src='../script/cadastro.js' defer></script> <!-- Adicionando defer para carregar o JS após o HTML -->
+</head>
+
+<body>
+    <nav>
+        <div class="nav__logo">
+          <a href="#"><img src="../img/logo.png" alt="logo" /></a>
+        </div>
+        <ul class="nav__links">
+          <li class="link"><a href="../index.html">Início</a></li>
+          <li class="link"><a href="../view/leiloes.html">Leilões</a></li>
+          <li class="link"><a href="../view/QuemSomos.html">Quem Somos</a></li>
+        </ul>
+        <a href="../view/login.html"><button class="btn">Login</button></a>
+        <a href="../view/leiloes.html"><button class="btn">Leilões</button></a>  <!--adicionei botão -->
+      </nav>
+  
+      <header class="section__container header__container">
+        <div class="header__content">
+          <span class="bg__blur"></span>
+          <span class="bg__blur header__blur"></span>
+
+    <main>
+        <h1>Faça seu cadastro</h1>
+        <div class="leilao_img">
+            <img src="../img/cadastro.jpg" alt="Imagem de Cadastro">
+        </div>
+
+        <form id="cadastroForm">
+            <label for="name">Nome:</label>
+            <input type="text" name="name" id="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email" required>
+
+            <label for="password">Senha:</label>
+            <input type="password" name="password" id="password" required>
+
+            <label for="cpf_cnpj">Cpf/Cnpj:</label>
+            <input type="text" name="cpf_cnpj" id="cpf_cnpj" required>
+
+            <label for="birthday">Data de Nascimento:</label>
+            <input type="date" name="birthday" id="birthday" required>
+
+            <label for="terms">Aceito os Termos:</label>
+            <input type="checkbox" name="terms" id="terms" required><br>
+
+            <input type="button" value="Cadastre-se" onclick="cadastro()">
+        </form>
+    </main>
+
+    <footer>
+      <div class="section__container footer__container">
+        <div class="footer__brand">
+          <img src="../img/logo.png" alt="logo" />
+          <h4>EW7 LEILÃO</h4>
+          <p>
+            O melhor site de leilões online, onde você pode adquirir eletrônicos com segurança e economia.
+          </p>
+          <div class="footer__socials">
+            <span><i class="ri-facebook-fill"></i></span>
+            <span><i class="ri-instagram-line"></i></span>
+            <span><i class="ri-twitter-fill"></i></span>
+          </div>
+        </div>
+        <div class="footer__links">
+          <h4>Links Rápidos</h4>
+          <ul>
+            <li><a href="#">Início</a></li>
+            <li><a href="#">Leilões</a></li>
+            <li><a href="#">Termos de Serviço</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+</body>
+
+</html>

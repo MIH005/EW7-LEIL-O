@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Endereços</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #eac452;
+            text-align: left;
+        }
+
+        th {
+            background-color: #eac452;
+        }
+
+        button {
+            padding: 5px 10px;
+            background-color: #eac452;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Lista de Endereços</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Endereço</th>
+                <th>Número</th>
+                <th>CEP</th>
+                <th>Complemento</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody id="addressList">
+        </tbody>
+    </table>
+
+    <script src="./SCRIPT/atualização_end.js"></script> <!-- Referência ao arquivo JS -->
+</body>
+
+</html>
